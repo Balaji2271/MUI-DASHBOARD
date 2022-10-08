@@ -1,6 +1,4 @@
-import {useState} from 'react';
-import {BrowserRouter, Routes, Route } from 'react-router-dom';
-import Layout from '../Components/Layout';
+import { Routes , Route } from 'react-router-dom';
 import Alert from '../Pages/Alert'
 import Analytics from '../Pages/Analytics';
 import Areachart from '../Pages/Areachart';
@@ -29,14 +27,15 @@ import Typography from '../Pages/Typography';
 import User from '../Pages/User';
 import Widgetapp from '../Pages/Widgetapp';
 import Widgetfeed from '../Pages/Widgetfeed';
+import Layout from '../Components/Layout'
+import {useState} from 'react'
 
 const Routers = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(true)
   return (
-    <>
-    <BrowserRouter>
+    <> 
     <Routes>
-    <Route path='/' element={<Layout isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />} />
+    <Route path='/' element={<Layout isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen}/>} />
     <Route path='/alert' element={<Alert />} />
     <Route path='/analytics' element={<Analytics/>} />
     <Route path='/areachart' element={<Areachart />} />
@@ -66,7 +65,7 @@ const Routers = () => {
     <Route path='/widgetapp' element={<Widgetapp/>} />
     <Route path='/widgetfeed' element={<Widgetfeed/>} />
     </Routes>
-    </BrowserRouter>
+   
     </>
   )
 }
