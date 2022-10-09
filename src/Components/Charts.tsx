@@ -1,6 +1,6 @@
 
 import React,{useEffect} from "react";
-import { Grid,Stack,Box } from "@mui/material";
+import { Grid,Stack,Box,Typography } from "@mui/material";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -78,12 +78,13 @@ const singleData = {
 }
 
 
-export default function RenderChart() {
+export default function Charts() {
  
   return (
-    <Grid container spacing={2} sx={{my:2}} >
-      <Grid item xs={12} sm={12} md={7} lg={7}>
-        <Box sx={{backgroundColor:"#fff",height:{md:"70vh"}}}>
+    <Grid container spacing={2} sx={{my:2 }} >
+      <Grid item xs={12} sm={12} md={7} lg={7}  >
+        <Box sx={{backgroundColor:"#fff",height:{md:"70vh"},borderRadius: '16px'}}>
+        <Typography variant='h6' sx={{fontWeight:"bold", p:2}}>Revenue Updates</Typography>
         <Line data={data} options={options}/>
         </Box>
       </Grid>

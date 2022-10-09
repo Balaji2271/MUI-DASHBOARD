@@ -29,6 +29,7 @@ import Widgetapp from '../Pages/Widgetapp';
 import Widgetfeed from '../Pages/Widgetfeed';
 import Layout from '../Components/Layout'
 import {useState} from 'react'
+import Footer from '../Components/Footer';
 
 const Routers = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(true)
@@ -65,7 +66,7 @@ const Routers = () => {
     <Route path='/widgetapp' element={<Widgetapp/>} />
     <Route path='/widgetfeed' element={<Widgetfeed/>} />
     </Routes>
-   
+   <Footer/>
     </>
   )
 }

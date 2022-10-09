@@ -10,10 +10,6 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { List , ListItem, ListItemIcon, ListItemText } from "@mui/material"
 import {useNavigate} from "react-router-dom"
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
-import './layout.css'
-import Transaction from './Transaction'
-import  RenderChart from './ChartComponent'
-import  Performance  from './Performance'
 import PieChartOutlinedIcon from '@mui/icons-material/PieChartOutlined';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import NoteAltOutlinedIcon from '@mui/icons-material/NoteAltOutlined';
@@ -39,11 +35,14 @@ import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 import RestartAltOutlinedIcon from '@mui/icons-material/RestartAltOutlined';
 import ReportProblemOutlinedIcon from '@mui/icons-material/ReportProblemOutlined';
 import ClearAllOutlinedIcon from '@mui/icons-material/ClearAllOutlined';
-
+import './layout.css'
+import Cards from './Cards'
+import  Charts from './Charts'
+import  Tables  from './Tables'
 
 const Layout = ({isDrawerOpen,setIsDrawerOpen}:{isDrawerOpen:boolean,setIsDrawerOpen:any}) => {
 
-  const handleDrawerToggle = () => {
+  const handleDrawerOpen = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
@@ -244,7 +243,7 @@ const Menuitems6 =[
   const drawer = (
     <div>  
       <List>
-         <Typography variant="button">DASHBOARD</Typography>
+         <Typography variant="button" sx={{p:2}}>DASHBOARD</Typography>
          <p></p>
         {Menuitems.map((item) => (
           <ListItem
@@ -258,7 +257,7 @@ const Menuitems6 =[
         ))}
       </List>
       <List>
-         <Typography variant="button">APP</Typography>
+         <Typography variant="button" sx={{p:2}} >APP</Typography>
          <p></p>
         {Menuitems1.map((item) => (
           <ListItem
@@ -272,7 +271,7 @@ const Menuitems6 =[
         ))}
       </List>
       <List>
-         <Typography variant="button">PAGES</Typography>
+         <Typography variant="button" sx={{p:2}}>PAGES</Typography>
          <p></p>
         {Menuitems2.map((item) => (
           <ListItem
@@ -286,7 +285,7 @@ const Menuitems6 =[
         ))}
       </List>
       <List>
-         <Typography variant="button">FORMS</Typography>
+         <Typography variant="button" sx={{p:2}}>FORMS</Typography>
          <p></p>
         {Menuitems3.map((item) => (
           <ListItem
@@ -300,7 +299,7 @@ const Menuitems6 =[
         ))}
       </List>
       <List>
-         <Typography variant="button">WIDGET</Typography>
+         <Typography variant="button" sx={{p:2}}>WIDGET</Typography>
          <p></p>
         {Menuitems4.map((item) => (
           <ListItem
@@ -314,7 +313,7 @@ const Menuitems6 =[
         ))}
       </List>
       <List>
-         <Typography variant="button">CHARTS</Typography>
+         <Typography variant="button" sx={{p:2}}>CHARTS</Typography>
          <p></p>
         {Menuitems5.map((item) => (
           <ListItem
@@ -328,7 +327,7 @@ const Menuitems6 =[
         ))}
       </List>
       <List>
-         <Typography variant="button">AUTHENTICATION</Typography>
+         <Typography variant="button" sx={{p:2}}>AUTHENTICATION</Typography>
          <p></p>
         {Menuitems6.map((item) => (
           <ListItem
@@ -349,7 +348,11 @@ const Menuitems6 =[
       <AppBar position="fixed" style={{ background: '#fff' }}>
         <Toolbar>
           <Box sx={{ display: { xs: 'none', md: 'flex', lg: 'flex' }, flexDirection: 'row', alignItems: 'center', mr: 6 }} >
-           
+          <Typography variant="h6" sx={{
+              color: 'text.primary'
+            }} >
+              Flexy
+            </Typography>
           </Box>
           <Box flexGrow={2} ml={{ xs: 0, sm: 0, md: 0, lg: "4rem" }}>
             <IconButton>
@@ -390,14 +393,15 @@ const Menuitems6 =[
       <Drawer
        variant="persistent"
         open={isDrawerOpen}
-        onClose={handleDrawerToggle}
+        onClose={handleDrawerOpen}
         className="scrollbar"
         ModalProps={{
           keepMounted: true, 
         }}
         sx={{  
           '& .MuiDrawer-paper': 
-          {
+          { 
+            lg:{
             top:"15%",
             left:"2%",
             height:"79%",
@@ -407,7 +411,7 @@ const Menuitems6 =[
             backgroundColor: "rgb(255, 255, 255)",
             boxShadow: "rgb(90 114 123 / 11%) 0px 7px 30px 0px",
             padding:2
-            
+            }
           },
         }}
       >
@@ -418,10 +422,10 @@ const Menuitems6 =[
         ml:35,
         top:"30%"
       }: {ml:2})}}>
-        <Transaction />
-       <RenderChart />
+        <Cards />
+       <Charts />
       <Box sx={{mr:2}}>
-       <Performance/>
+       <Tables/>
        </Box>
        </Box>
        </div>

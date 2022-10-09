@@ -1,6 +1,6 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Box, Grid,Typography,Badge } from '@mui/material';
+import { Box, Grid,Typography,Badge ,Divider} from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -13,7 +13,7 @@ import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const data = {
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+  
   datasets: [
     {
       label: '# of Votes',
@@ -28,15 +28,16 @@ export const data = {
       borderColor: [
         'rgba(255, 99, 132, 1)',
         'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)'
+        // 'rgba(255, 206, 86, 1)',
+        // 'rgba(75, 192, 192, 1)',
+        // 'rgba(153, 102, 255, 1)'
         
       ],
       borderWidth: 1,
-      height:400
+      height:390
     },
   ],
+  labels: ['Red', 'Blue']
 };
 const BasicTable = () => {
   function createData(
@@ -50,24 +51,20 @@ const BasicTable = () => {
   }
 
   const rows = [
-    createData('Sunil Joshi', 'Elite Admin','Low', '$24.k'),
-    createData('Andrew MacDonald','Real Homes WP Theme','High','$34.k'),
-    createData('Christopher Jamil', 'MedicalPro WP Theme','Low', '$55k'),
-    createData('Nirav Joshi', 'Hosting Press HTML', 'Critical','$2.4k'),
-    createData('Micheal Doe', 'Helping Hands Theme', 'Moderate','$3.9k'),
-    createData('Sunil Joshi', 'Elite Admin','Low', '$24.k'),
-    createData('Andrew MacDonald','Real Homes WP Theme','High','$34.k'),
-    createData('Christopher Jamil', 'MedicalPro WP Theme','Low', '$55k'),
-    createData('Nirav Joshi', 'Hosting Press HTML', 'Critical','$2.4k'),
-    createData('Micheal Doe', 'Helping Hands Theme', 'Moderate','$3.9k'),
+    createData( 'Elite Admin','Sunil Joshi','Low', '$3.9k'),
+    createData('Real Homes WP Theme','Andrew MacDonald','Medium','$24.5k'),
+    createData( 'MedicalPro WP Theme','Christopher Jamil','High', '$12.8k'),
+    createData( 'Hosting Press HTML', 'Nirav Joshi','Critical','$2.4k'),
+    createData( 'Helping Hands Theme', 'Micheal Doe','Moderate','$9.3k'),
+    
   ];
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} size="small" aria-label="simple table">
+      <Table sx={{ minWidth: 650 ,height:390}} size="small" aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell sx={{color:"#777E89"}}>Name</TableCell>
-            <TableCell align="right" sx={{color:"#777E89"}}>Assigned</TableCell>
+            <TableCell sx={{color:"#777E89"}}>Assigned</TableCell>
+            <TableCell align="right" sx={{color:"#777E89"}}> Name</TableCell>
             <TableCell align="right" sx={{color:"#777E89"}}>Priority</TableCell>
             <TableCell align="right" sx={{color:"#777E89"}}>Budget</TableCell>
             
@@ -76,13 +73,13 @@ const BasicTable = () => {
         <TableBody>
           {rows.map((row) => (
             <TableRow
-              key={row.Assigned}
+              key={row.Name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
-                {row.Assigned}
+              <TableCell component="th" scope="row" sx={{fontWeight: "bold"}}>
+                {row.Name}
               </TableCell>
-              <TableCell align="right" sx={{color:"#777E89"}}>{row.Name}</TableCell>
+              <TableCell align="right" sx={{color:"#777E89"}}> {row.Assigned}</TableCell>
               <TableCell align="right"><Badge badgeContent={row.priority} color="warning"></Badge></TableCell>
               <TableCell align="right">{row.Budget}</TableCell>
              
@@ -93,14 +90,18 @@ const BasicTable = () => {
     </TableContainer>
   )
 }
-export default function Performance() {
+export default function Tables() {
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12} md={5} sx={{height:200,mb:{xs:10,sm:10,md:0}}}>
-        <Box sx={{height:450,backgroundColor:"#fff"}}>
+      <Grid item xs={12} md={5} sx={{height:150,mb:{xs:10,sm:10,md:0 }}}>
+        <Box sx={{height:460,backgroundColor:"#fff",borderRadius: '16px'}}>
+        <Typography variant='subtitle1' sx={{fontWeight:"bold", p:2}}>Total Sales</Typography>
+        <p></p>
+          <Divider/>
+          <p></p>
           <Doughnut data={data} options={{
           responsive: true,
-          maintainAspectRatio: true,
+          maintainAspectRatio: false
         }} />
         </Box>
       </Grid>
@@ -113,5 +114,7 @@ export default function Performance() {
         </Box>
       </Grid>
     </Grid>
+
   )
 }
+
